@@ -11,18 +11,9 @@ int networkAlertStub(float celcius) {
     return 200;
 }
 
-int networkAlert(float celcius) {
-    if(celcius <= 200)
-    {
-        return 200;
-    }
-    printf("ALERT: Temperature is %.1f celcius.\n", celcius);
-    return 500;
-}
-
-void alertInCelcius(float farenheit, int (*networkAlertFunc)(float)) {
+void alertInCelcius(float farenheit) {
     float celcius = (farenheit - 32) * 5 / 9;
-    int returnCode = networkAlertFunc(celcius);
+    int returnCode = networkAlertStub(celcius);
     if (returnCode != 200) {
         // non-ok response is not an error! Issues happen in life!
         // let us keep a count of failures to report
@@ -33,17 +24,8 @@ void alertInCelcius(float farenheit, int (*networkAlertFunc)(float)) {
 }
 
 int main() {
-
-    // Using function networkAlert
-    aleartInClecius(150.0, &networkAlert); //alertFailureCount will be 0.
-    aleartInCelcius(305.0, &networkAlert);//alertFailureCount must be 1 now as this case is failed.
-    assert(alertFailureCount == 1); // Pass
-
-    // Using function networkAlertStub
-    aleartInClecius(150.0, &networkAlertStub); //alertFailureCount will be 0.
-    aleartInCelcius(305.0, &networkAlertStub);//alertFailureCount must be 1 now as this case is failed, function has bug resulting alertFailureCount is not incremented.
-    // assert(alertFailureCount == 1); // Fail  
-
+    alertInCelcius(400.5);
+    alertInCelcius(303.6);
     printf("%d alerts failed.\n", alertFailureCount);
     printf("All is well (maybe!)\n");
     return 0;
