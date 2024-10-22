@@ -59,7 +59,7 @@ int printColorMap(char* printedOutput) {
 
 int main() {
     char printedOutput[2000] = {0};    
-    int result = printColorMap();
+    int result = printColorMap(printedOutput);
     assert(result == 25);
     checkOutput(printedOutput);  // This will validate the correctness of the output
     printf("All is well (maybe!)\n");
