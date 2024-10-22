@@ -14,6 +14,21 @@ const char* expectedOutput[25] = {
     "24 | Violet | Slate\n"
 };
 
+int printColorMap() {
+    const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
+    const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
+    int i = 0, j = 0;
+
+    // Loop to print the color combinations
+    for(i = 0; i < 5; i++) {
+        for(j = 0; j < 5; j++) {
+            printf("%d | %s | %s\n", i * 5 + j, majorColor[i], minorColor[j]);
+        }
+    }
+
+    return i * j;  // Return the total number of entries
+}
+
 // Function to capture and compare output
 void testPrintColorMapOutput() {
     char buffer[2000] = {0};
@@ -35,21 +50,6 @@ void testPrintColorMapOutput() {
 
     // Validate the return value
     assert(result == 25 && "Number of entries mismatch");
-}
-
-int printColorMap() {
-    const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
-    const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
-    int i = 0, j = 0;
-
-    // Loop to print the color combinations
-    for(i = 0; i < 5; i++) {
-        for(j = 0; j < 5; j++) {
-            printf("%d | %s | %s\n", i * 5 + j, majorColor[i], minorColor[j]);
-        }
-    }
-
-    return i * j;  // Return the total number of entries
 }
 
 int main() {
