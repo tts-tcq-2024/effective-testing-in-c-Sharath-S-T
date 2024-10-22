@@ -37,9 +37,8 @@ void checkOutput(const char* printedOutput) {
     char* outputPtr = (char*)printedOutput;
 
     for (i = 0; i < 25; i++) {
-        // Extract one line of output at a time from printedOutput
         sscanf(outputPtr, "%[^\n]\n", buffer);
-        outputPtr += strlen(buffer) + 1;  // Move to next line in output
+        outputPtr += strlen(buffer) + 1;
 
         // Compare the expected output
         assert(strcmp(buffer, expectedOutput[i]) == 0 && "Output does not match the expected combination");
