@@ -35,13 +35,13 @@ void alertInCelcius(float farenheit, int (*networkAlertFunc)(float)) {
 int main() {
 
     // Using function networkAlert
-    aleartInClecius(150.0, &networkAlert); //alertFailureCount will be 0.
-    aleartInCelcius(305.0, &networkAlert);//alertFailureCount must be 1 now as this case is failed.
+    alertInCelcius(150.0, &networkAlert); //alertFailureCount will be 0.
+    alertInCelcius(305.0, &networkAlert);//alertFailureCount must be 1 now as this case is failed.
     assert(alertFailureCount == 1); // Pass
 
     // Using function networkAlertStub
-    aleartInClecius(150.0, &networkAlertStub); //alertFailureCount will be 0.
-    aleartInCelcius(305.0, &networkAlertStub);//alertFailureCount must be 1 now as this case is failed, function has bug resulting alertFailureCount is not incremented.
+    alertInCelcius(150.0, &networkAlertStub); //alertFailureCount will be 0.
+    alertInCelcius(305.0, &networkAlertStub);//alertFailureCount must be 1 now as this case is failed, function has bug resulting alertFailureCount is not incremented.
     assert(alertFailureCount == 1); // Fail  
 
     printf("%d alerts failed.\n", alertFailureCount);
